@@ -1,23 +1,28 @@
 package de.fhswf.fit.model;
 
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
-import java.util.List;
+
 
 @Getter
 @Setter
 @ToString
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@XmlRootElement
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Integer id;
 
     @Column
     private String productNumber;
@@ -29,10 +34,10 @@ public class Product {
     private BigDecimal price;
 
     @Column
-    private List<String> imageIds;
+    private Integer imageIds;
 
     @Column
-    private List<String> categoryIds;
+    private Integer categoryIds;
 
     @Column
     private Integer inStock;
@@ -40,17 +45,5 @@ public class Product {
     @Column
     private String description;
 
-    public Product() {
-    }
 
-    public Product(Long id, String productNumber, String name, BigDecimal price, List<String> imageIds, List<String> categoryIds, Integer inStock, String description) {
-        this.id = id;
-        this.productNumber = productNumber;
-        this.name = name;
-        this.price = price;
-        this.imageIds = imageIds;
-        this.categoryIds = categoryIds;
-        this.inStock = inStock;
-        this.description = description;
-    }
 }

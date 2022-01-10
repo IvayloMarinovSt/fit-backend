@@ -1,17 +1,23 @@
 package de.fhswf.fit.model;
 
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@XmlRootElement
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long id;
+    private Integer id;
 
     @Column
     private String name;
@@ -23,14 +29,5 @@ public class Image {
     @Column
     private ImageType type;
 
-    public Image() {
-    }
-
-    public Image(Long id, String name, byte[] data, ImageType type) {
-        this.id = id;
-        this.name = name;
-        this.data = data;
-        this.type = type;
-    }
 
 }
