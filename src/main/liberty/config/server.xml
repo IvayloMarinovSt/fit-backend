@@ -3,7 +3,6 @@
         <feature>jakartaee-9.0</feature>
         <feature>servlet-5.0</feature>
         <feature>cdi-3.0</feature>
-        <feature>jaxrs-2.1</feature>
         <feature>jdbc-4.2</feature>
     </featureManager>
 
@@ -18,17 +17,16 @@
     />
     <webApplication id="FIT" location="FIT.war" contextRoot="/"/>
 
-    <library id="MariaDbLib">
-        <fileset dir="jdbc" includes="*.jar"/>
+    !-- Derby Library Configuration -->
+    <library id="derbyJDBCLib">
+        <fileset dir="${shared.resource.dir}/" includes="derby*.jar" />
     </library>
 
-    <dataSource jndiName="DefaultDataSource">
-        <jdbcDriver libraryRef="MariaDbLib"/>
-        <properties
-                serverName="localhost"
-                databaseName="fit"
-                portNumber="3306"
-                user="root" password="root"/>
+
+    <!-- Datasource Configuration -->
+    <dataSource id="DefaultDataSource">
+        <jdbcDriver libraryRef="derbyJDBCLib" />
+        <properties.derby.embedded databaseName="PhoneDB" createDatabase="create" />
     </dataSource>
 
 

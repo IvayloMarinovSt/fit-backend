@@ -74,10 +74,11 @@
                         </runtimeUrl>
                     </install>
                     <copyDependencies>
-                        <location>jdbc</location>
+                        <location>${project.build.directory}/liberty/wlp/usr/shared/resources</location>
                         <dependency>
-                            <groupId>org.mariadb.jdbc</groupId>
-                            <artifactId>mariadb-java-client</artifactId>
+                            <groupId>org.apache.derby</groupId>
+                            <artifactId>derby</artifactId>
+                            <version>10.14.2.0</version>
                         </dependency>
                     </copyDependencies>
                 </configuration>
@@ -119,8 +120,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <!-- Liberty configuration -->
         <liberty.var.default.http.port>9090</liberty.var.default.http.port>
         <liberty.var.default.https.port>9999</liberty.var.default.https.port>
