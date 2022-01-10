@@ -1,10 +1,9 @@
 package de.fhswf.fit.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,30 +11,39 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@Document
+
+@Entity
 public class Product {
-
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Long id;
 
+    @Column
     private String productNumber;
 
+    @Column
     private String name;
 
+    @Column
     private BigDecimal price;
 
+    @Column
     private List<String> imageIds;
 
+    @Column
     private List<String> categoryIds;
 
+    @Column
     private Integer inStock;
 
+    @Column
     private String description;
 
     public Product() {
     }
 
-    public Product(String id, String productNumber, String name, BigDecimal price, List<String> imageIds, List<String> categoryIds, Integer inStock, String description) {
+    public Product(Long id, String productNumber, String name, BigDecimal price, List<String> imageIds, List<String> categoryIds, Integer inStock, String description) {
         this.id = id;
         this.productNumber = productNumber;
         this.name = name;

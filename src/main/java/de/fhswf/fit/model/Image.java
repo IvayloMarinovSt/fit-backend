@@ -1,28 +1,36 @@
 package de.fhswf.fit.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.bson.types.Binary;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document
+@Entity
 public class Image {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Long id;
 
+    @Column
     private String name;
 
-    private Binary data;
+    @Lob
+    @Column
+    private byte[] data;
 
+    @Column
     private ImageType type;
 
-    public Image(String id, String name, Binary data, ImageType type) {
+    public Image() {
+    }
+
+    public Image(Long id, String name, byte[] data, ImageType type) {
         this.id = id;
         this.name = name;
         this.data = data;
         this.type = type;
     }
+
 }
