@@ -34,9 +34,11 @@ public class Product {
     private BigDecimal price;
 
     @Column
+    @OneToMany
     private Integer imageIds;
 
     @Column
+    @OneToMany
     private Integer categoryIds;
 
     @Column
