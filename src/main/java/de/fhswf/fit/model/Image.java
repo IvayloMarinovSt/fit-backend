@@ -17,7 +17,7 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    @ManyToOne
+//    @ManyToOne
     private Integer id;
 
     @Column

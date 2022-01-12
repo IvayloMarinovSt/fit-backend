@@ -1,9 +1,14 @@
 package de.fhswf.fit.service;
 
+import de.fhswf.fit.model.Category;
 import de.fhswf.fit.model.Product;
+import de.fhswf.fit.repositories.ProductRepository;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.math.BigDecimal;
 
@@ -11,30 +16,55 @@ import java.util.Arrays;
 import java.util.List;
 
 @Path("/product")
-@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_HTML})
-@Produces({MediaType.APPLICATION_JSON})
+@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_HTML, MediaType.WILDCARD})
+@Produces({MediaType.APPLICATION_JSON, MediaType.WILDCARD})
 public class ProductController {
 
+	@Inject
+	ProductRepository productRepository;
 
 	@GET
-	public List<Product> getAll() {
-		Product pr1 = new Product(null,
-				"3231",
-				"name",
-				new BigDecimal(2),
-				null,
-				null,
-				2,
-				"desc");
-		return Arrays.asList(pr1);
+	public Response getAll() {
+		try {
+			List<Product> products = productRepository.findAll();
+			if (products.isEmpty()) {
+				return Response.noContent().build();
+			}
+			return Response.ok(products).build();
+		} catch (Exception exc) {
+			return Response.serverError().build();
+		}
+	}
+
+	@GET
+	@Path("/{id}")
+	public Response getById(@PathParam("id") Long id) {
+		try {
+			Product product = productRepository.findById(id);
+			if (product == null)
+				return Response.noContent().build();
+			return Response.ok().build();
+		} catch (Exception e) {
+			return Response.serverError().build();
+		}
 	}
 
 	@POST
-	public Product addProduct(Product product) {
-		System.out.println(product);
-//		return productRepository.save(product);
-		return null;
-//		TODO impl
+	public Response addProduct(Product product) {
+		try {
+			return Response.ok(productRepository.create(product)).build();
+		} catch (Exception e) {
+			return Response.serverError().build();
+		}
 	}
 
+	@DELETE
+	public Response delete(Product product) {
+		try {
+			productRepository.delete(product);
+			return Response.ok(product).build();
+		} catch (Exception e) {
+			return Response.serverError().build();
+		}
+	}
 }

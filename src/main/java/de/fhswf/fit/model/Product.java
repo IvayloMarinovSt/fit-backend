@@ -29,7 +29,7 @@ public class Product {
     @Column
     private Integer id;
 
-    @Column
+    @Column(unique = true)
     private String productNumber;
 
     @Column
@@ -39,11 +39,11 @@ public class Product {
     private BigDecimal price;
 
     @Column
-    @OneToMany
+//    @OneToMany
     private List<Integer> imageIds;
 
     @Column
-    @OneToMany
+//    @OneToMany
     private List<Integer> categoryIds;
 
     @Column

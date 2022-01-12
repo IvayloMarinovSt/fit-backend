@@ -1,8 +1,7 @@
 package de.fhswf.fit.repositories;
 
-import de.fhswf.fit.model.Product;
+import de.fhswf.fit.model.Image;
 import jakarta.ejb.Stateless;
-import jakarta.enterprise.context.Dependent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceUnit;
@@ -15,20 +14,20 @@ import java.util.List;
 
 @PersistenceUnit
 @Stateless
-public class ProductRepository
-//      extends AbstractRepository<Product>
+public class ImageRepository
+//      extends AbstractRepository<Image>
 {
     @PersistenceContext
     EntityManager entityManager;
 
-    public Product create(Product entity)
+    public Image create(Image entity)
     {
         entityManager.persist(entity);
         return entity;
     }
 
 
-    public Product delete(Product entity)
+    public Image delete(Image entity)
     {
         entity = entityManager.merge(entity);
         entityManager.remove(entity);
@@ -36,30 +35,30 @@ public class ProductRepository
     }
 
 
-    public Product update(Product entity)
+    public Image update(Image entity)
     {
         entityManager.merge(entity);
         return entity;
     }
 
 
-    public Product findById(Long id)
+    public Image findById(Long id)
     {
-        return entityManager.find(Product.class, id);
+        return entityManager.find(Image.class, id);
     }
 
 
-    public List<Product> findAll()
+    public List<Image> findAll()
     {
 
 //        return entityManager.createQuery(
-//                    "Select t from" + Product.class.getSimpleName() + " t")
+//                    "Select t from" + Image.class.getSimpleName() + " t")
 //              .getResultList();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
-        Root<Product> root = criteriaQuery.from(Product.class);
+        CriteriaQuery<Image> criteriaQuery = criteriaBuilder.createQuery(Image.class);
+        Root<Image> root = criteriaQuery.from(Image.class);
         criteriaQuery.select(root);
-        TypedQuery<Product> query = entityManager.createQuery(criteriaQuery);
+        TypedQuery<Image> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
     }
 }

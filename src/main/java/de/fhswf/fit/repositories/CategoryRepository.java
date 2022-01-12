@@ -15,7 +15,6 @@ import java.util.List;
 
 @PersistenceUnit
 @Stateless
-//@Dependent
 public class CategoryRepository
 //      extends AbstractRepository<Category>
 {
