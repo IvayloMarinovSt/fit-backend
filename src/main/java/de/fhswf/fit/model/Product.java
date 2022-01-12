@@ -1,6 +1,11 @@
 package de.fhswf.fit.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +14,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigDecimal;
-
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,11 +40,11 @@ public class Product {
 
     @Column
     @OneToMany
-    private Integer imageIds;
+    private List<Integer> imageIds;
 
     @Column
     @OneToMany
-    private Integer categoryIds;
+    private List<Integer> categoryIds;
 
     @Column
     private Integer inStock;
