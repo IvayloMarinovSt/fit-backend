@@ -20,7 +20,7 @@ public class Image {
 
     private String name;
 
-    @Lob @Basic(fetch = FetchType.LAZY)
+    @Lob
     private String data;
 
     @Enumerated(EnumType.STRING)
