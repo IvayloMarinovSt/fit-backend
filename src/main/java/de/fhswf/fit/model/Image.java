@@ -20,8 +20,8 @@ public class Image {
 
     private String name;
 
-    @Lob
-    private byte[] data;
+    @Lob @Basic(fetch = FetchType.LAZY)
+    private String data;
 
     @Enumerated(EnumType.STRING)
     private ImageType type;
