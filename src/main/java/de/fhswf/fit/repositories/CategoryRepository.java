@@ -2,7 +2,6 @@ package de.fhswf.fit.repositories;
 
 import de.fhswf.fit.model.Category;
 import jakarta.ejb.Stateless;
-import jakarta.enterprise.context.Dependent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceUnit;
@@ -51,10 +50,6 @@ public class CategoryRepository
     
     public List<Category> findAll()
     {
-
-//        return entityManager.createQuery(
-//                    "Select t from" + Category.class.getSimpleName() + " t")
-//              .getResultList();
                 CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
                 CriteriaQuery<Category> criteriaQuery = criteriaBuilder.createQuery(Category.class);
                 Root<Category> root = criteriaQuery.from(Category.class);

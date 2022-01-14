@@ -1,6 +1,6 @@
 <server description="WebApp">
     <featureManager>
-        <feature>jakartaee-9.0</feature>
+        <feature>jakartaee-9.1</feature>
         <feature>servlet-5.0</feature>
         <feature>cdi-3.0</feature>
         <feature>jdbc-4.2</feature>
@@ -26,7 +26,7 @@
     <!-- Datasource Configuration -->
     <dataSource id="DefaultDataSource">
         <jdbcDriver libraryRef="derbyJDBCLib" />
-        <properties.derby.embedded databaseName="PhoneDB" createDatabase="create" />
+        <properties.derby.embedded databaseName="ShopDB" createDatabase="create" />
     </dataSource>
 
 

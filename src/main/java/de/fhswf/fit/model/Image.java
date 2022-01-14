@@ -16,19 +16,17 @@ import lombok.Setter;
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-//    @ManyToOne
     private Integer id;
 
-    @Column
     private String name;
 
     @Lob
-    @Column
     private byte[] data;
 
-    @Column
+    @Enumerated(EnumType.STRING)
     private ImageType type;
 
+    @Column(name = "image_product")
+    private Integer productId;
 
 }

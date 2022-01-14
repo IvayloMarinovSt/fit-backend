@@ -1,18 +1,18 @@
 package de.fhswf.fit.service;
 
-import de.fhswf.fit.model.Category;
 import de.fhswf.fit.model.Product;
 import de.fhswf.fit.repositories.ProductRepository;
 import jakarta.inject.Inject;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.ws.rs.*;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import java.math.BigDecimal;
-
-import java.util.Arrays;
 import java.util.List;
 
 @Path("/product")

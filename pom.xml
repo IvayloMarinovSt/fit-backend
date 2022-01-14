@@ -18,9 +18,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>io.openliberty.beta</groupId>
+            <groupId>io.openliberty</groupId>
             <artifactId>openliberty-jakartaee9</artifactId>
-            <version>21.0.0.9-beta</version>
+<!--            <version>21.0.0.9-beta</version>-->
+            <version>21.0.0.12</version>
             <type>zip</type>
         </dependency>
         <dependency>
@@ -70,7 +71,8 @@
                 <configuration>
                     <install>
                         <runtimeUrl>
-                            https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/beta/2021-08-24_2341/openliberty-jakartaee9-21.0.0.10-beta.zip
+<!--                            https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/beta/2021-08-24_2341/openliberty-jakartaee9-21.0.0.10-beta.zip-->
+                            https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/release/2021-11-17_1256/openliberty-jakartaee9-21.0.0.12.zip
                         </runtimeUrl>
                     </install>
                     <copyDependencies>

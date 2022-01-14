@@ -22,15 +22,14 @@ public class Category
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-//    @ManyToOne
     private Integer id;
 
-    @Column
     private String name;
 
-    @Column
     private String description;
+
+    @Column(name = "category_product")
+    private Integer productId;
 
     @Override
     public boolean equals(Object o)

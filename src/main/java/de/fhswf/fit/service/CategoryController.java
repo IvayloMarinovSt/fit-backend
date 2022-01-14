@@ -30,9 +30,9 @@ public class CategoryController
             }
             return Response.ok(categories).build();
         }
-        catch (Exception exc)
+        catch (Exception e)
         {
-            return Response.serverError().build();
+            return Response.serverError().entity(e.getMessage()).build();
         }
     }
 
@@ -49,7 +49,7 @@ public class CategoryController
         }
         catch (Exception e)
         {
-            return Response.serverError().build();
+            return Response.serverError().entity(e.getMessage()).build();
         }
     }
 
@@ -62,17 +62,21 @@ public class CategoryController
         }
         catch (Exception e)
         {
-            return Response.serverError().build();
+            return Response.serverError().entity(e.getMessage()).build();
         }
     }
 
     @DELETE
-    public Response delete(Category category){
-        try {
+    public Response delete(Category category)
+    {
+        try
+        {
             categoryRepository.delete(category);
             return Response.ok(category).build();
-        } catch (Exception e) {
-            return Response.serverError().build();
+        }
+        catch (Exception e)
+        {
+            return Response.serverError().entity(e.getMessage()).build();
         }
     }
 }
