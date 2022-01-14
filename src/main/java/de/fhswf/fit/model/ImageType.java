@@ -1,13 +1,16 @@
 package de.fhswf.fit.model;
 
-public enum ImageType {
+public enum ImageType
+{
     JPEG("jpeg"),
     PNG("png"),
+    JPG("jpg"),
     GIF("gif");
 
-    private String label;
+    private final String label;
 
-    private ImageType(String label){
+    private ImageType(String label)
+    {
         this.label = label;
     }
 }
