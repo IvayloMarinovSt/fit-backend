@@ -1,14 +1,10 @@
 package de.fhswf.fit.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlRootElement;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-import java.util.Objects;
+import lombok.*;
 
 @Getter
 @Setter
@@ -22,29 +18,13 @@ public class Category
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
 
     private String description;
 
-    @Column(name = "category_product")
-    private Integer productId;
+    @ManyToMany
+    private List<Product> products;
 
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Category category = (Category) o;
-        return id != null && Objects.equals(id, category.id);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return getClass().hashCode();
-    }
 }

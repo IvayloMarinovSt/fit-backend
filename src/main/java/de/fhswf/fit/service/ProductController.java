@@ -1,6 +1,8 @@
 package de.fhswf.fit.service;
 
+import de.fhswf.fit.model.Image;
 import de.fhswf.fit.model.Product;
+import de.fhswf.fit.repositories.ImageRepository;
 import de.fhswf.fit.repositories.ProductRepository;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -16,12 +18,15 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/product")
-@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.TEXT_HTML, MediaType.WILDCARD})
-@Produces({MediaType.APPLICATION_JSON, MediaType.WILDCARD})
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 public class ProductController {
 
 	@Inject
 	ProductRepository productRepository;
+
+	@Inject
+	ImageRepository imageRepository;
 
 	@GET
 	public Response getAll() {
@@ -49,6 +54,18 @@ public class ProductController {
 		}
 	}
 
+	@GET
+	@Path("/{id}/images")
+	public Response getImagesByProductId(@PathParam("id") Long id) {
+		try {
+			Product product = productRepository.findById(id);
+			List<Image> productImages = product.getImages();
+			return Response.ok(productImages).build();
+		} catch (Exception e) {
+			return Response.serverError().build();
+		}
+	}
+
 	@POST
 	public Response addProduct(Product product) {
 		try {
@@ -61,7 +78,7 @@ public class ProductController {
 	@DELETE
 	public Response delete(Product product) {
 		try {
-			productRepository.delete(product);
+			product = productRepository.delete(product);
 			return Response.ok(product).build();
 		} catch (Exception e) {
 			return Response.serverError().build();

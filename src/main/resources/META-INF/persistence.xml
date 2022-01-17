@@ -9,6 +9,9 @@
         <properties>
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
             <property name="eclipselink.ddl-generation.output-mode" value="both" />
+            <property name="eclipselink.logging.logger" value="ServerLogger"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
             <property name="jakarta.persistence.sql-load-script-source"
                       value="src/main/resources/META-INF/inserts.sql"/>
             <property name="eclipselink.logging.level" value="FINE"/>

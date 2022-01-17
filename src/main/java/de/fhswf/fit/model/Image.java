@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,7 +18,7 @@ import lombok.Setter;
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String name;
 
@@ -26,7 +28,7 @@ public class Image {
     @Enumerated(EnumType.STRING)
     private ImageType type;
 
-    @Column(name = "image_product")
-    private Integer productId;
+    @ManyToMany(mappedBy = "images")
+    private List<Product> products;
 
 }
